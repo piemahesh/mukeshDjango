@@ -20,7 +20,7 @@ from whatsApp import views
 
 
 urlpatterns = [
-   path("whatsApp/",include("whatsApp.urls")),
+   path("",include("whatsApp.urls")),
    path("insta/",include("instagram.urls")),
    path('admin/', admin.site.urls)  
 ]

@@ -18,7 +18,7 @@
         required
         placeholder="Enter a userName"
       />
-      <label for="password">Last name:</label>
+      <label for="password">password :</label>
       <input
         type="password"
         id="lname"
@@ -26,8 +26,15 @@
         required
         placeholder="Enter a password"
       />
+      <label for="password"> confirm password :</label>
+      <input
+        type="password"
+        id="lname"
+        name="confirmPassword"
+        required
+        placeholder="Enter a password"
+      />
       <input type="submit" value="Submit" />
     </form>
-    <a href="{% url 'registerPage' %}">register</a>
   </body>
 </html>
