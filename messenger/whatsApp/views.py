@@ -35,7 +35,9 @@ def aboutPage(req):
 def viewPage(req):
     print("trigger")
     users = db.userCol.find()
-    if(not req.session):
+    # addedd
+    sessionId = req.session.get("accessKey")
+    if(not sessionId):
         return redirect("login")
     return render(req, 'view.html', {"users": users})
     
