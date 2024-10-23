@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
   <body>
+    {% comment %} {% set name = "hi" %} {% endcomment %}
+    <p>{{ name }}</p>
     <form method="post">
       {% csrf_token %}
       <label for="userName">First name:</label>
@@ -28,6 +30,6 @@
       />
       <input type="submit" value="Submit" />
     </form>
-    <a href="{% url 'registerPage' %}">register</a>
+    <a href="{% url 'register' %}">register</a>
   </body>
 </html>
