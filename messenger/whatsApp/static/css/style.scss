@@ -40,4 +40,21 @@ form {
   }
 }
 
+.cardContainer {
+  width: 100%;
+  height: 100%;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 10px;
+  .card {
+    padding: 25px;
+    background-color: white;
+    border-radius: 15px;
+    font-size: 30px;
+    color: red;
+  }
+}
+
 @import "./_about.scss";

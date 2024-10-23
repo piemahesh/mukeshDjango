@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div>
+      <a href="{% url 'logout' %}">logout</a>
+    </div>
+    <div class="cardContainer">
+      {% for user in users %}
+      <div class="card">
+        <p>{{ user.username }}</p>
+        {% if user.username == "mukesh" %}
+        <p>yes</p>
+        {% else %}
+        <p>NO</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
