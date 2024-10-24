@@ -10,14 +10,14 @@ def homePage(req):
         userName = query.get("userName")
         password = query.get("password")
         user = db.userCol.find_one({"username":userName, "password":password})
-        print(user,"this is user")
-        sessionId = req.session.set("accessKey")
-        if(sessionId == user):
-            print("yes")
+        if(not user):
+            return redirect("register")
+        else:
+            id = str(user['_id'])
+            req.session['accessKey'] = id
             return redirect("view")
     print(req,"this is request")
     print("im called")
-    
     return render(req, 'index.html')
 
 
@@ -31,7 +31,6 @@ def register(req):
             db.userCol.insert_one({"username":userName,"password":password})
             return redirect("login")
     return render(req,'register.html')
-
 def aboutPage(req):
     print("im about page")
     return render(req, 'about.html')
