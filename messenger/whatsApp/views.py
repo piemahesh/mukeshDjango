@@ -11,6 +11,10 @@ def homePage(req):
         password = query.get("password")
         user = db.userCol.find_one({"username":userName, "password":password})
         print(user,"this is user")
+        sessionId = req.session.set("accessKey")
+        if(sessionId == user):
+            print("yes")
+            return redirect("view")
     print(req,"this is request")
     print("im called")
     
