@@ -35,7 +35,7 @@ def aboutPage(req):
     print("im about page")
     return render(req, 'about.html')
 
-def viewPage(req):
+def viewPage(req):  
     print("trigger")
     users = db.userCol.find()
     # addedd
@@ -44,6 +44,24 @@ def viewPage(req):
         return redirect("login")
     return render(req, 'view.html', {"users": users})
     
+def addUser(req):
+    if(req.method=="POST"):
+        print("im hitted")
+        userId = req.session.get("accessKey")
+        
+        query = req.POST
+        username = query.get("username")
+        age = query.get("age")
+        phoneNumber = query.get("phoneNumber")
+        print(phoneNumber, username, age)
+        db.customerCol.insert_one({"username":username,"age":age,"phoneNumber":phoneNumber,"userId":userId})
+        print("user added successfully")
+        return redirect("viewUser")
+    return render(req,"addUser.html")
+
+def viewUser(req):
+    customers = db.customerCol.find()
+    return render(req,"viewUser.html",{"customers":customers})
 
 def logout(req):
     del req.session["accessKey"]
